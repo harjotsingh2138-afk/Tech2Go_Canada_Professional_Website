@@ -42,17 +42,17 @@
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: 24px;
+      font-size: 36px; /* Increased from 24px */
       color: #111;
       line-height: 1;
     }
 
     .logo small {
       display: block;
-      font-size: 11px;
+      font-size: 14px; /* Increased from 11px */
       font-weight: 500;
       color: var(--gray);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     nav {
@@ -154,13 +154,13 @@
       grid-template-columns: 1fr 1.5fr;
       gap: 60px;
       align-items: start;
-      pointer-events: none; /* Stops the columns from blocking clicks */
+      pointer-events: none;
     }
 
     .services-intro {
       position: sticky;
       top: 40px;
-      pointer-events: auto; /* Restores clicking back to intro column elements */
+      pointer-events: auto;
     }
 
     .services-intro .label {
@@ -211,7 +211,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 24px;
-      pointer-events: auto; /* Restores clicking back to your service cards */
+      pointer-events: auto;
     }
 
     .service-card {
