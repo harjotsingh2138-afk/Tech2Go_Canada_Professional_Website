@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truck & Trailer Roadside Repair Services - Coverage</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #96281b;
+      --red-light: #e74c3c;
+      --yellow: #f39c12;
+      --yellow-bright: #f1c40f;
+      --dark: #111111;
+      --gray: #555555;
+      --light-bg: #fdfdfd;
+      --border: #e8e8e8;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: 'Barlow', sans-serif;
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── FIXED STICKY NAVIGATION WRAPPER ── */
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #ffffff;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    nav a.btn {
+      background: var(--red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 3px;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      background: #ffffff;
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    .hero h1 span {
+      color: var(--red);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ddd, transparent);
+      margin: 40px auto;
+      max-width: 1200px;
+    }
+
+    /* ── COVERAGE CONTENT DESIGN ── */
+    .coverage-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    .section-header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 60px 0 24px;
+      border-left: 4px solid var(--red);
+      padding-left: 15px;
+    }
+
+    .coverage-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .clear-filter-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--red);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none; /* Hidden by default, shown via JS */
+      letter-spacing: 1px;
+    }
+
+    .clear-filter-btn:hover {
+      text-decoration: underline;
+    }
+
+    .section-intro-text {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    /* Region Grid Layout */
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .region-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border-top: 3px solid var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    .region-card:hover {
+      border-top-color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .region-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+      color: var(--red);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .region-card h3::after {
+      content: '🇨🇦';
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    .city-tags {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .city-tag {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333333;
+      padding: 8px 12px;
+      background: var(--light-bg);
+      border: 1px solid #eeeeee;
+      border-radius: 3px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .city-tag:hover {
+      background: #fff5f5;
+      border-color: var(--red-light);
+      color: var(--red);
+    }
+
+    /* Active / Dimmed States for Interactivity */
+    .city-tag.active-filter {
+      background: var(--red);
+      color: #ffffff;
+      border-color: var(--red);
+    }
+
+    .city-tag.active-filter:hover {
+      background: var(--red-dark);
+      color: #ffffff;
+    }
+
+    .region-card.dimmed {
+      opacity: 0.4;
+      transform: scale(0.98);
+    }
+
+    /* Callout Box */
+    .coverage-callout {
+      text-align: center;
+      padding: 40px 30px;
+      background: #fff9f9;
+      border: 1px solid rgba(192,57,43,0.15);
+      border-radius: 4px;
+      color: var(--dark);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 60px;
+    }
+
+    .coverage-callout strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .header-wrapper { position: relative; }
+      .hero { padding: 60px 20px 40px; }
+      .coverage-section { padding: 20px 20px 60px; }
+      .region-grid { grid-template-columns: 1fr; gap: 20px; }
+      header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .section-header-container { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FIXED STICKY NAVIGATION WRAPPER -->
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>Canada-Wide Roadside Repair<span>Coverage Areas</span></h1>
+  <p>Providing rapid 24/7 commercial emergency assistance, heavy truck diagnostic oversight, and trailer maintenance deployments anywhere your assets sit idle.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- MAIN COVERAGE SECTION -->
+<main class="coverage-section">
+  
+  <p class="section-intro-text">
+    OneCall Roadside Repair operates a comprehensive dispatch matrix supporting heavy-haul fleet operations across major transportation corridors. Click any service city below to focus on local regional parameters.
+  </p>
+
+  <div class="section-header-container">
+    <h2>Major Service Hubs</h2>
+    <button class="clear-filter-btn" id="clearFilter">Show All Regions ×</button>
+  </div>
+  
+  <div class="region-grid" id="regionGrid">
+    
+    <!-- Ontario Panel -->
+    <div class="region-card">
+      <h3>Ontario</h3>
+      <div class="city-tags">
+        <button class="city-tag">Toronto</button>
+        <button class="city-tag">Mississauga</button>
+        <button class="city-tag">Brampton</button>
+        <button class="city-tag">Hamilton</button>
+        <button class="city-tag">London</button>
+        <button class="city-tag">Windsor</button>
+        <button class="city-tag">Kitchener</button>
+        <button class="city-tag">Waterloo</button>
+        <button class="city-tag">Cambridge</button>
+        <button class="city-tag">Oshawa</button>
+        <button class="city-tag">Kingston</button>
+        <button class="city-tag">Sudbury</button>
+        <button class="city-tag">Thunder Bay</button>
+        <button class="city-tag">Ottawa</button>
+        <button class="city-tag">Barrie</button>
+      </div>
+    </div>
+
+    <!-- Quebec Panel -->
+    <div class="region-card">
+      <h3>Quebec</h3>
+      <div class="city-tags">
+        <button class="city-tag">Montreal</button>
+        <button class="city-tag">Quebec City</button>
+        <button class="city-tag">Laval</button>
+        <button class="city-tag">Longueuil</button>
+        <button class="city-tag">Sherbrooke</button>
+        <button class="city-tag">Trois-Rivières</button>
+        <button class="city-tag">Saguenay</button>
+        <button class="city-tag">Gatineau</button>
+        <button class="city-tag">Drummondville</button>
+        <button class="city-tag">Saint-Hyacinthe</button>
+      </div>
+    </div>
+
+    <!-- Alberta Panel -->
+    <div class="region-card">
+      <h3>Alberta</h3>
+      <div class="city-tags">
+        <button class="city-tag">Calgary</button>
+        <button class="city-tag">Edmonton</button>
+        <button class="city-tag">Red Deer</button>
+        <button class="city-tag">Lethbridge</button>
+        <button class="city-tag">Medicine Hat</button>
+        <button class="city-tag">Grande Prairie</button>
+        <button class="city-tag">Fort McMurray</button>
+      </div>
+    </div>
+
+    <!-- British Columbia Panel -->
+    <div class="region-card">
+      <h3>British Columbia</h3>
+      <div class="city-tags">
+        <button class="city-tag">Vancouver</button>
+        <button class="city-tag">Surrey</button>
+        <button class="city-tag">Burnaby</button>
+        <button class="city-tag">Richmond</button>
+        <button class="city-tag">Langley</button>
+        <button class="city-tag">Abbotsford</button>
+        <button class="city-tag">Kelowna</button>
+        <button class="city-tag">Kamloops</button>
+        <button class="city-tag">Prince George</button>
+        <button class="city-tag">Nanaimo</button>
+        <button class="city-tag">Victoria</button>
+      </div>
+    </div>
+
+    <!-- Prairies Panel -->
+    <div class="region-card">
+      <h3>Manitoba &amp; Sask.</h3>
+      <div class="city-tags">
+        <button class="city-tag">Winnipeg, MB</button>
+        <button class="city-tag">Brandon, MB</button>
+        <button class="city-tag">Regina, SK</button>
+        <button class="city-tag">Saskatoon, SK</button>
+        <button class="city-tag">Prince Albert, SK</button>
+        <button class="city-tag">Moose Jaw, SK</button>
+      </div>
+    </div>
+
+    <!-- Atlantic Canada Panel -->
+    <div class="region-card">
+      <h3>Atlantic Provinces</h3>
+      <div class="city-tags">
+        <button class="city-tag">Halifax, NS</button>
+        <button class="city-tag">Sydney, NS</button>
+        <button class="city-tag">Moncton, NB</button>
+        <button class="city-tag">Saint John, NB</button>
+        <button class="city-tag">Fredericton, NB</button>
+        <button class="city-tag">Charlottetown, PE</button>
+        <button class="city-tag">St. John's, NL</button>
+        <button class="city-tag">Corner Brook, NL</button>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Remote &amp; Rural Logistics</h2>
+  <p class="section-intro-text">
+    Our service footprint goes well past fixed municipal truck hubs. Leveraging an active industrial network of master mechanics and mobile rescue platforms, OneCall Roadside Repair provides critical diesel mechanics out on key highway cross-points, northern mining infrastructure routes, remote logging cuts, and oilfield layouts.
+  </p>
+  <p class="section-intro-text">
+    If your asset experiences an issue off standard commercial routes, our emergency response coordinators will actively locate and source the nearest service unit directly to your coordinates.
+  </p>
+
+  <div class="coverage-callout">
+    <strong>24/7 Emergency Dispatch Available Across Canada</strong>
+    Our line stays open through the night. Call us whenever mechanical issues threaten your delivery timeline.
+  </div>
+
+</main>
+
+<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+
+<!-- INTERACTIVE FILTER LOGIC -->
+<script>
+  const tags = document.querySelectorAll('.city-tag');
+  const cards = document.querySelectorAll('.region-card');
+  const clearBtn = document.getElementById('clearFilter');
+
+  tags.forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      const wasActive = tag.classList.contains('active-filter');
+      
+      // Reset all tags and cards first
+      tags.forEach(t => t.classList.remove('active-filter'));
+      cards.forEach(c => c.classList.remove('dimmed'));
+      
+      if (!wasActive) {
+        // Mark clicked tag as active
+        tag.classList.add('active-filter');
+        
+        // Find parent card and dim all *other* cards
+        const parentCard = tag.closest('.region-card');
+        cards.forEach(card => {
+          if (card !== parentCard) {
+            card.classList.add('dimmed');
+          }
+        });
+        
+        // Show reset button
+        clearBtn.style.display = 'inline-block';
+      } else {
+        // If clicking an already active tag, just reset everything
+        clearBtn.style.display = 'none';
+      }
+    });
+  });
+
+  // Reset function
+  clearBtn.addEventListener('click', () => {
+    tags.forEach(t => t.classList.remove('active-filter'));
+    cards.forEach(c => c.classList.remove('dimmed'));
+    clearBtn.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

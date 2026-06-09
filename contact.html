@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truck & Trailer Roadside Repair Services</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #96281b;
+      --red-light: #e74c3c;
+      --yellow: #f39c12;
+      --yellow-bright: #f1c40f;
+      --dark: #ffffff;
+      --dark2: #f5f5f5;
+      --dark3: #eeeeee;
+      --gray: #555;
+      --light: #f5f5f0;
+      --white: #111111;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: 'Barlow', sans-serif;
+      color: #111111;
+      min-height: 100vh;
+    }
+
+    /* ── FIXED STICKY NAVIGATION WRAPPER ── */
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e8e8e8;
+      z-index: 1000; /* Layers the navigation bar on top of all page elements */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #ffffff;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      color: #111;
+      line-height: 1;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    nav a.btn {
+      background: var(--red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 3px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(192,57,43,0.03) 60px,
+        rgba(192,57,43,0.03) 1px
+      );
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #555;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: white;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--red-light); }
+
+    /* SERVICES SECTION */
+    .services {
+      padding: 80px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .section-title span { color: var(--red); }
+
+    .section-sub {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 56px;
+      max-width: 500px;
+    }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2px;
+    }
+
+    .card {
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .card:hover { transform: translateY(-4px); z-index: 2; }
+    .card:hover .card-img-placeholder img { filter: brightness(0.6); }
+    .card:hover .card-overlay { opacity: 1; }
+    .card:hover .card-arrow { transform: translateX(6px); }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 260px;
+      background: #1a1a1a;
+      position: relative;
+    }
+
+    .card-img-placeholder img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.4s ease;
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 260px;
+      background: linear-gradient(to bottom, rgba(192,57,43,0.15), rgba(192,57,43,0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .card-number {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: white;
+      background: var(--red);
+      padding: 4px 10px;
+      border-radius: 2px;
+      z-index: 2;
+    }
+
+    .card-body {
+      padding: 24px 28px 28px;
+      border-top: 2px solid var(--red);
+      position: relative;
+    }
+
+    .card-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      color: #111111;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #e8e8e8;
+      padding-top: 16px;
+    }
+
+    .card-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      background: rgba(243,156,18,0.1);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid rgba(243,156,18,0.2);
+    }
+
+    .card-arrow {
+      font-size: 20px;
+      color: var(--red);
+      transition: transform 0.3s ease;
+    }
+
+    /* BOTTOM BANNER */
+    .bottom-banner {
+      background: var(--red);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .bottom-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(0,0,0,0.05) 20px,
+        rgba(0,0,0,0.05) 21px
+      );
+    }
+
+    .bottom-banner h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .bottom-banner p {
+      font-size: 16px;
+      opacity: 0.85;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .phone-link {
+      display: inline-block;
+      background: white;
+      color: var(--red);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 40px;
+      border-radius: 3px;
+      text-decoration: none;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .phone-link:hover { transform: scale(1.03); }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ddd, transparent);
+      margin: 0 40px;
+    }
+
+    @media (max-width: 600px) {
+      .header-wrapper { position: relative; } /* Reverts sticky header on mobile screens to preserve valuable screen height */
+      .hero { padding: 60px 20px 40px; }
+      .services { padding: 60px 20px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 2px; }
+      header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
+      nav { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FIXED STICKY NAVIGATION WRAPPER -->
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<section class="contact-section">
+  <div class="contact-container">
+    
+    <!-- LEFT PANEL: Contact Information -->
+    <div class="contact-info-panel">
+      <span class="sub-label">Get In Touch</span>
+      <h2>Contact <span>Us</span></h2>
+      <p>Have a fleet emergency or need an immediate roadside repair estimate? Reach out directly or fill out the dispatch form. We answer 24/7.</p>
+      
+      <div class="info-details">
+        <div class="info-item">
+          <span class="info-icon">✉</span>
+          <div>
+            <h4>Email Us</h4>
+            <a href="mailto:email-123@gmail.com">email-123@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div>
+            <h4>Call or Text</h4>
+            <a href="tel:+15550000000">+1 (555) 000-0000</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: Professional Contact Form -->
+    <div class="contact-form-panel">
+      <form class="pro-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Doe" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(555) 000-0000" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="name@company.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Describe your issue</label>
+          <textarea placeholder="Tell us your location and what mechanical breakdown support you need..." rows="4" required></textarea>
+        </div>
+        
+        <button type="button" class="submit-btn" onclick="alert('Thank you! We have received your emergency dispatch request and will contact you shortly.')">
+          Submit Request
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modern Contact Section Styles -->
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #c0392b;
+    --red-hover: #a62c20;
+    --dark: #111111;
+    --gray: #555555;
+    --light-bg: #f9f9f9;
+    --border: #dddddd;
+  }
+  body { font-family: 'Barlow', sans-serif; background-color: #ffffff; color: var(--dark); }
+
+  .contact-section { max-width: 1280px; margin: 80px auto; padding: 0 40px; }
+  .contact-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+  
+  /* Left Panel Typography */
+  .contact-info-panel .sub-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; display: block; }
+  .contact-info-panel h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 24px; color: var(--dark); }
+  .contact-info-panel h2 span { color: var(--red); }
+  .contact-info-panel p { font-size: 16px; color: var(--gray); line-height: 1.6; margin-bottom: 40px; }
+  
+  /* Info Items */
+  .info-details { display: flex; flex-direction: column; gap: 24px; }
+  .info-item { display: flex; align-items: center; gap: 20px; }
+  .info-icon { font-size: 24px; color: var(--red); background: var(--light-bg); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+  .info-item h4 { font-size: 14px; text-transform: uppercase; color: var(--gray); letter-spacing: 1px; margin-bottom: 2px; }
+  .info-item a { font-size: 18px; font-weight: 600; color: var(--dark); text-decoration: none; transition: color 0.2s; }
+  .info-item a:hover { color: var(--red); }
+
+  /* Right Panel Form Layout */
+  .contact-form-panel { background: var(--light-bg); padding: 40px; border-radius: 4px; border-bottom: 4px solid var(--red); box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+  .pro-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--gray); letter-spacing: 0.5px; }
+  
+  .form-group input, .form-group textarea { padding: 14px; font-family: inherit; font-size: 15px; border: 1px solid var(--border); border-radius: 4px; background: #ffffff; outline: none; transition: border-color 0.2s; color: var(--dark); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--red); }
+  
+  /* Button Styling */
+  .submit-btn { background: var(--red); color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 16px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s; width: 100%; margin-top: 10px; }
+  .submit-btn:hover { background: var(--red-hover); }
+
+  /* Responsive Adjustments */
+  @media (max-width: 960px) {
+    .contact-container { grid-template-columns: 1fr; gap: 50px; }
+    .contact-section { margin: 50px auto; }
+  }
+  @media (max-width: 600px) {
+    .contact-section { padding: 0 20px; }
+    .contact-info-panel h2 { font-size: 40px; }
+    .contact-form-panel { padding: 25px; }
+  }
+</style>
+
+<div class="coverage-callout">
+    <strong>24/7 Emergency Dispatch Available Across Canada</strong><br>
+    Call us anytime for roadside truck and trailer repair assistance.
+</div>
+
+<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+</body>
+</html>

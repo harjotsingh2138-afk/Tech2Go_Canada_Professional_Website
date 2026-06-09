@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — Onecall Roadside Repair</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #c0392b;
+    --red-dark: #96281b;
+    --red-light: #e74c3c;
+    --yellow: #f39c12;
+    --white: #ffffff;
+    --dark: #111111;
+    --gray: #555555;
+    --light-gray: #f7f7f7;
+    --border: #e8e8e8;
+  }
+
+  body {
+    background: #ffffff;
+    font-family: 'Barlow', sans-serif;
+    color: var(--dark);
+  }
+
+  /* ── FIXED STICKY NAVIGATION WRAPPER ── */
+  .header-wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    z-index: 1000; /* Ensures navigation layers above everything else */
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #111;
+    line-height: 1;
+  }
+
+  .logo small {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #111;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  nav a.btn {
+    background: var(--red);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 3px;
+  }
+
+  /* ── ABOUT HERO STRIP ── */
+  .about-hero {
+    background: #ffffff;
+    border-bottom: 3px solid var(--red);
+    padding: 72px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::after {
+    content: 'ONECALL';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px;
+    font-weight: 900;
+    color: rgba(192,57,43,0.04);
+    letter-spacing: -4px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .about-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .about-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .about-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+
+  .about-hero h1 span {
+    color: var(--red);
+  }
+
+  .about-hero-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+
+  .about-hero-text strong {
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  .about-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .about-cta:hover { background: var(--red-light); }
+
+  /* RIGHT SIDE — IMAGE + BADGE */
+  .about-img-wrap {
+    position: relative;
+  }
+
+  /* FIXED CONTAINER: Switched layout type to display block with relative boundaries */
+  .about-img-box {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(145deg, #efefef, #e4e4e4);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: block; 
+  }
+
+  .about-img-box::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--red);
+    z-index: 3; /* Places the subtle bottom line cleanly over the image edge */
+  }
+
+  /* FIXED ABSOLUTE IMAGE POSITIONING */
+  .about-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  /* FIXED POSITION: Centers fallback icon manually inside parent container boundaries */
+  .about-img-icon {
+    font-size: 56px;
+    opacity: 0.2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -18px;
+    left: 30px;
+    background: var(--red);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 3px;
+    box-shadow: 0 8px 24px rgba(192,57,43,0.3);
+    z-index: 4; /* Keeps badge floating perfectly ahead of standard element overlaps */
+  }
+
+  .about-badge-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+
+  .about-badge-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    background: var(--dark);
+    padding: 48px 40px;
+  }
+
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 28px 20px;
+    border-right: 1px solid #222;
+    position: relative;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  /* ── WHY CHOOSE US ── */
+  .why-section {
+    padding: 80px 40px;
+    background: var(--light-gray);
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .why-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .why-header h2 span { color: var(--red); }
+
+  .why-header p {
+    font-size: 15px;
+    color: var(--gray);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .why-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    padding: 32px 28px;
+    border-radius: 3px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .why-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .why-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(192,57,43,0.08);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .why-content h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .why-content p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--gray);
+  }
+
+  /* ── MISSION STRIP ── */
+  .mission-strip {
+    background: var(--red);
+    padding: 64px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-strip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(0,0,0,0.04) 18px,
+      rgba(0,0,0,0.04) 19px
+    );
+  }
+
+  .mission-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+  }
+
+  .mission-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+
+  .mission-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1.2;
+    max-width: 700px;
+  }
+
+  .mission-text em {
+    font-style: normal;
+    color: var(--yellow);
+  }
+
+  .mission-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s;
+  }
+
+  .mission-cta:hover { transform: scale(1.03); }
+
+  /* ── TEAM / VALUES ── */
+  .values-section {
+    padding: 80px 40px;
+    background: white;
+  }
+
+  .values-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .values-left h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .values-left h2 span { color: var(--red); }
+
+  .values-left p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .values-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .values-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  .values-list li::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--red);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Right side — contact card */
+  .contact-card {
+    background: var(--light-gray);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--red);
+    border-radius: 3px;
+    padding: 40px 36px;
+  }
+
+  .contact-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .contact-card .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-row:last-of-type {
+    border-bottom: none;
+    margin-bottom: 28px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(192,57,43,0.08);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-info-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2px;
+  }
+
+  .contact-info-val {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .contact-card-cta {
+    display: block;
+    text-align: center;
+    background: var(--red);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .contact-card-cta:hover { background: var(--red-light); }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid #222;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .header-wrapper { position: relative; } /* Disables sticky headers gracefully on tablets/mobile layouts */
+    header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
+    nav { flex-wrap: wrap; justify-content: center; }
+    .about-hero-inner,
+    .values-inner { grid-template-columns: 1fr; gap: 40px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .mission-inner { grid-template-columns: 1fr; }
+    .about-hero { padding: 50px 20px 40px; }
+    .why-section,
+    .values-section { padding: 60px 20px; }
+    .about-hero::after { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid #222; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FIXED STICKY NAVIGATION WRAPPER -->
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<!-- ── ABOUT HERO ── -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+
+    <div class="about-left">
+      <p class="about-label">About Us</p>
+      <h1>Who Is<br><span>Onecall?</span></h1>
+      <p class="about-hero-text">
+        <strong>Onecall Roadside Repair</strong> is a mobile truck and trailer repair company built for the road. 
+        When your rig breaks down, we don't wait for you to come to us — 
+        <strong>we come to you</strong>, wherever you're stranded, day or night.
+      </p>
+      <p class="about-hero-text">
+        We're a new company with fresh energy, certified technicians, and one clear mission: 
+        get you back on the road as fast as possible — with honest pricing and zero runaround.
+      </p>
+      <a href="tel:+1-800-000-0000" class="about-cta">&#128222; Call Us Now</a>
+    </div>
+
+    <div class="about-img-wrap">
+      <div class="about-img-box">
+        <div class="about-img-icon">🔧</div>
+        <img src="images/9.jpg" class="about-main-img" alt="Onecall Roadside Repair Truck">
+      </div>
+      <div class="about-badge">
+        <span class="about-badge-num">24/7</span>
+        <span class="about-badge-text">Always Available</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── STATS ROW ── -->
+<div class="stats-row">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">24/7</span>
+      <span class="stat-label">Emergency Service</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Truck & Trailer Types</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Mobile — We Come to You</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$0</span>
+      <span class="stat-label">Hidden Fees. Ever.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY CHOOSE US ── -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-header">
+      <p class="about-label" style="justify-content:center;">Why Onecall</p>
+      <h2>Why Drivers <span>Choose Us</span></h2>
+      <p>We built Onecall Roadside Repair around what truck drivers actually need — speed, honesty, and a tech who shows up.</p>
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon">🕐</div>
+        <div class="why-content">
+          <h3>24/7 Availability</h3>
+          <p>Breakdowns don't follow business hours. Onecall is on call around the clock — nights, weekends, and holidays. If you're stranded, we're on our way.</p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <div class="why-content">
+          <h3>Certified Technicians</h3>
+          <p>Our techs are experienced, certified professionals who know trucks and trailers inside and out. You're getting real expertise on every call — not guesswork.</p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-content">
+          <h3>Fast Response Time</h3>
+          <p>Every minute you're stopped is money lost. We move fast, arrive prepared, and get straight to work so you spend as little time on the shoulder as possible.</p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-content">
+          <h3>Honest & Fair Pricing</h3>
+          <p>No surprise charges. No inflated roadside markups. We give you a straight quote before we start, and we stick to it. Transparent pricing — every single time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION STRIP ── -->
+<section class="mission-strip">
+  <div class="mission-inner">
+    <div>
+      <p class="mission-label">Our Mission</p>
+      <p class="mission-text">
+        To be the most <em>trusted</em> roadside repair team on the road —
+        fast, fair, and always ready when drivers need us most.
+      </p>
+    </div>
+    <a href="tel:+1-800-000-0000" class="mission-cta">&#128222; Get Help Now</a>
+  </div>
+</section>
+
+<!-- ── VALUES + CONTACT CARD ── -->
+<section class="values-section">
+  <div class="values-inner">
+
+    <div class="values-left">
+      <p class="about-label">What We Stand For</p>
+      <h2>Built on <span>Respect</span><br>for the Road.</h2>
+      <p>
+        At Onecall Roadside Repair, we know that truck drivers keep this country moving. 
+        That's why we treat every call like it matters — because it does. 
+        Whether it's a blowout at 2am or an engine issue on a Monday morning, 
+        you deserve fast, professional service with no attitude and no hassle.
+      </p>
+      <ul class="values-list">
+        <li>We show up — every time, no excuses</li>
+        <li>We communicate clearly before and during the job</li>
+        <li>We respect your time and your rig</li>
+        <li>We charge what we quote, nothing more</li>
+        <li>We take pride in doing the job right the first time</li>
+      </ul>
+    </div>
+
+    <div class="contact-card">
+      <h3>Get in Touch</h3>
+      <p class="sub">Ready to help 24 hours a day, 7 days a week.</p>
+
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="contact-info-label">Phone</p>
+          <p class="contact-info-val">1-800-000-0000</p>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div>
+          <p class="contact-info-label">Service Area</p>
+          <p class="contact-info-val">We Come To You — Anywhere on the Road</p>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <p class="contact-info-label">Hours</p>
+          <p class="contact-info-val">24 Hours / 7 Days a Week</p>
+        </div>
+      </div>
+
+      <a href="tel:+1-800-000-0000" class="contact-card-cta">&#128222; Call Onecall Now</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>&copy; 2026 ONECALL ROADSIDE REPAIR. 24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+
+</body>
+</html>

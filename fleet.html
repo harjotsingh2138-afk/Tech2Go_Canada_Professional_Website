@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truck & Trailer Roadside Repair Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #96281b;
+      --red-light: #e74c3c;
+      --dark: #111111;
+      --gray: #555555;
+      --light-bg: #f9f9f9;
+      --border-color: #e8e8e8;
+    }
+
+    body {
+      background: #ffffff;
+      font-family: 'Barlow', sans-serif;
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* FIXED / STICKY HEADER CONTAINER */
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000; /* Keeps the header layered on top of all scrolling content */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #ffffff;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    nav a.btn {
+      background: var(--red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+
+    nav a.btn:hover {
+      background: var(--red-light);
+    }
+
+    /* PREMIUM SPLIT LAYOUT */
+    .services-section {
+      max-width: 1280px;
+      margin: 60px auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Adjusted top offset so the left panel sticks cleanly below your sticky header */
+    .services-intro {
+      position: sticky;
+      top: 120px; 
+    }
+
+    .services-intro .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .services-intro h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .services-intro h1 span {
+      color: var(--red);
+    }
+
+    .services-intro p {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .featured-image-wrapper {
+      width: 100%;
+      height: 380px;
+      border-radius: 4px;
+      overflow: hidden;
+      border-bottom: 4px solid var(--red);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .featured-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* SERVICE CARDS GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--light-bg);
+      padding: 30px;
+      border-radius: 4px;
+      transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid transparent;
+    }
+
+    .service-card:hover {
+      background: #ffffff;
+      transform: translateY(-4px);
+      border-color: var(--border-color);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .icon-indicator {
+      color: var(--red);
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    /* CALLOUT BANNER & FOOTER */
+    .coverage-callout {
+      background: var(--red);
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .coverage-callout strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      background: #111111;
+      color: #ffffff;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 960px) {
+      .services-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .services-intro {
+        position: relative;
+        top: 0;
+      }
+      .featured-image-wrapper {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 20px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .services-section {
+        padding: 0 20px;
+      }
+      .services-intro h1 {
+        font-size: 40px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FIXED STICKY NAVIGATION WRAPPER -->
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<!-- SPLIT EXPERT GRID INTERFACE -->
+<section class="services-section">
+  
+  <!-- LEFT PANEL: Hero Header & Professional Image Alignment -->
+  <div class="services-intro">
+    <span class="label">Fleet Support Programs</span>
+    <h1>Fleet <span>Maintenance</span></h1>
+    <p>Comprehensive fleet inspections, customized preventive upkeep schedules, DOT-compliant safety inspections, and dependable emergency roadside assistance updates across Canada.</p>
+    
+    <div class="featured-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200" alt="ONECALL ROADSIDE REPAIR Professional Fleet Maintenance Support">
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL: Clean Text Service Block Matrix -->
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>Tire &amp; Blowout Repair</h3>
+      <p>Fast tire changes and rapid emergency blowout repair solutions wherever you are stranded on the highway.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>Diagnostics &amp; Electrical</h3>
+      <p>Full advanced engine and complex electrical troubleshooting brought straight to the scene of your breakdown.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>Truck Mechanical Repair</h3>
+      <p>Expert on-site roadside diagnostics, brakes, heavy suspension tuning, electrical arrays, and powertrain repairs.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>Trailer Structural Repairs</h3>
+      <p>Mobile assistance for landing gears, commercial doors, lighting lines, compressed air systems, and body structures.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>Emergency Roadside</h3>
+      <p>Rapid dispatch metrics strategically optimized for instances when logistics downtime actively impacts your bottom line.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-indicator">✓</div>
+      <h3>24/7 Dedicated Dispatch</h3>
+      <p>Day or night, clear skies or rain — our mechanical units offer seamless emergency roadside repair coverage all year round.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CALLOUT BANNER -->
+<div class="coverage-callout">
+  <strong>24/7 Emergency Dispatch Available Across Canada</strong><br>
+  Call us anytime for roadside truck and trailer repair assistance.
+</div>
+
+
+
+
+<!-- FOOTER ELEMENT -->
+<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+
+</body>
+</html>
