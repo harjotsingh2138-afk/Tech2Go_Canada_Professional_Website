@@ -4,7 +4,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Truck & Trailer Roadside Repair Services - Coverage</title>
-  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,8 +12,6 @@
       --red: #c0392b;
       --red-dark: #96281b;
       --red-light: #e74c3c;
-      --yellow: #f39c12;
-      --yellow-bright: #f1c40f;
       --dark: #111111;
       --gray: #555555;
       --light-bg: #fdfdfd;
@@ -26,9 +23,11 @@
       font-family: 'Barlow', sans-serif;
       color: var(--dark);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ── FIXED STICKY NAVIGATION WRAPPER ── */
+    /* ── UNIFIED FIXED STICKY NAVIGATION WRAPPER ── */
     .header-wrapper {
       position: sticky;
       top: 0;
@@ -43,13 +42,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 0 40px;
+      height: 113px; /* Locks header height exactly across all 6 pages */
       background: #ffffff;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* MATCHED HOMEPAGE LOGO FEATURES */
+    /* UNIFIED LOGO FEATURES */
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 32px;
@@ -78,11 +78,12 @@
       font-size: 11px;
       font-weight: 700;
       color: var(--gray);
-      letter-spacing: 3.2px; /* Perfectly aligns the subtitle under the main name */
+      letter-spacing: 3.2px;
       text-transform: uppercase;
       margin-top: 4px;
     }
 
+    /* UNIFIED NAVIGATION & BUTTON STYLING */
     nav {
       display: flex;
       align-items: center;
@@ -97,6 +98,11 @@
       text-transform: uppercase;
       font-size: 15px;
       letter-spacing: 1px;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--red);
     }
 
     nav a.btn {
@@ -104,9 +110,15 @@
       color: #fff;
       padding: 8px 16px;
       border-radius: 3px;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
-    /* ── HERO SECTION ── */
+    nav a.btn:hover {
+      background: var(--red-dark);
+      color: #fff;
+    }
+
+    /* HERO SECTION */
     .hero {
       background: #ffffff;
       padding: 80px 40px 60px;
@@ -127,222 +139,68 @@
       color: var(--dark);
     }
 
-    .hero h1 span {
-      color: var(--red);
-      display: block;
-    }
+    .hero h1 span { color: var(--red); display: block; }
+    .hero p { font-size: 18px; color: var(--gray); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); margin: 40px auto; max-width: 1200px; }
 
-    .hero p {
-      font-size: 18px;
-      color: var(--gray);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+    /* COVERAGE LAYOUTS */
+    .coverage-section { max-width: 1280px; margin: 0 auto; padding: 40px 40px 80px; flex: 1; width: 100%; }
+    .section-header-container { display: flex; justify-content: space-between; align-items: flex-end; margin: 60px 0 24px; border-left: 4px solid var(--red); padding-left: 15px; }
+    .coverage-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; text-transform: uppercase; color: var(--dark); line-height: 1; }
+    .clear-filter-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--red); background: none; border: none; cursor: pointer; display: none; letter-spacing: 1px; }
+    .clear-filter-btn:hover { text-decoration: underline; }
+    .section-intro-text { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 900px; margin-bottom: 24px; }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #ddd, transparent);
-      margin: 40px auto;
-      max-width: 1200px;
-    }
+    .region-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 30px; margin-top: 30px; }
+    .region-card { background: #ffffff; border: 1px solid var(--border); padding: 30px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 3px solid var(--dark); transition: all 0.3s ease; }
+    .region-card:hover { border-top-color: var(--red); transform: translateY(-2px); }
+    .region-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; color: var(--red); display: flex; justify-content: space-between; align-items: center; }
+    .region-card h3::after { content: '🇨🇦'; font-size: 16px; opacity: 0.7; }
+    
+    .city-tags { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .city-tag { font-size: 14px; font-weight: 500; color: #333333; padding: 8px 12px; background: var(--light-bg); border: 1px solid #eeeeee; border-radius: 3px; cursor: pointer; text-align: left; transition: all 0.2s ease; }
+    .city-tag:hover { background: #fff5f5; border-color: var(--red-light); color: var(--red); }
+    .city-tag.active-filter { background: var(--red); color: #ffffff; border-color: var(--red); }
+    .city-tag.active-filter:hover { background: var(--red-dark); color: #ffffff; }
+    .region-card.dimmed { opacity: 0.4; transform: scale(0.98); }
 
-    /* ── COVERAGE CONTENT DESIGN ── */
-    .coverage-section {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 40px 40px 80px;
-    }
+    .coverage-callout { text-align: center; padding: 40px 30px; background: #fff9f9; border: 1px solid rgba(192,57,43,0.15); border-radius: 4px; color: var(--dark); font-size: 18px; line-height: 1.6; margin-top: 60px; }
+    .coverage-callout strong { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 8px; }
 
-    .section-header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin: 60px 0 24px;
-      border-left: 4px solid var(--red);
-      padding-left: 15px;
-    }
-
-    .coverage-section h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--dark);
-      line-height: 1;
-    }
-
-    .clear-filter-btn {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--red);
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: none; /* Hidden by default, shown via JS */
-      letter-spacing: 1px;
-    }
-
-    .clear-filter-btn:hover {
-      text-decoration: underline;
-    }
-
-    .section-intro-text {
-      font-size: 16px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 900px;
-      margin-bottom: 24px;
-    }
-
-    /* Region Grid Layout */
-    .region-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .region-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 4px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      border-top: 3px solid var(--dark);
-      transition: all 0.3s ease;
-    }
-
-    .region-card:hover {
-      border-top-color: var(--red);
-      transform: translateY(-2px);
-    }
-
-    .region-card h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 20px;
-      color: var(--red);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .region-card h3::after {
-      content: '🇨🇦';
-      font-size: 16px;
-      opacity: 0.7;
-    }
-
-    .city-tags {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .city-tag {
-      font-size: 14px;
-      font-weight: 500;
-      color: #333333;
-      padding: 8px 12px;
-      background: var(--light-bg);
-      border: 1px solid #eeeeee;
-      border-radius: 3px;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.2s ease;
-    }
-
-    .city-tag:hover {
-      background: #fff5f5;
-      border-color: var(--red-light);
-      color: var(--red);
-    }
-
-    /* Active / Dimmed States for Interactivity */
-    .city-tag.active-filter {
-      background: var(--red);
-      color: #ffffff;
-      border-color: var(--red);
-    }
-
-    .city-tag.active-filter:hover {
-      background: var(--red-dark);
-      color: #ffffff;
-    }
-
-    .region-card.dimmed {
-      opacity: 0.4;
-      transform: scale(0.98);
-    }
-
-    /* Callout Box */
-    .coverage-callout {
-      text-align: center;
-      padding: 40px 30px;
-      background: #fff9f9;
-      border: 1px solid rgba(192,57,43,0.15);
-      border-radius: 4px;
-      color: var(--dark);
-      font-size: 18px;
-      line-height: 1.6;
-      margin-top: 60px;
-    }
-
-    .coverage-callout strong {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 24px;
-      text-transform: uppercase;
-      color: var(--red);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    /* Footer */
     footer {
       background: var(--dark);
-      color: #ffffff;
+      color: rgba(255,255,255,0.4);
       text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      padding: 24px;
+      font-size: 13px;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-top: 1px solid #222;
+      margin-top: auto;
     }
 
     @media (max-width: 768px) {
-      .header-wrapper { position: relative; }
+      header { flex-direction: column; gap: 15px; padding: 20px 20px; height: auto; text-align: center; }
+      nav { flex-wrap: wrap; justify-content: center; }
       .hero { padding: 60px 20px 40px; }
       .coverage-section { padding: 20px 20px 60px; }
       .region-grid { grid-template-columns: 1fr; gap: 20px; }
-      header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
-      nav { flex-wrap: wrap; justify-content: center; }
       .section-header-container { flex-direction: column; align-items: flex-start; gap: 10px; }
     }
   </style>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7HW95CCNS2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7HW95CCNS2');
-</script>
-
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HW95CCNS2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7HW95CCNS2');
+  </script>
 </head>
 <body>
 
-<!-- FIXED STICKY NAVIGATION WRAPPER -->
 <div class="header-wrapper">
   <header>
-    <!-- UPDATED LOGO MARKUP -->
     <div class="logo">
       <a href="index.html">
         <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
@@ -361,7 +219,6 @@
   </header>
 </div>
 
-<!-- HERO SECTION -->
 <section class="hero">
   <h1>Canada-Wide Roadside Repair<span>Coverage Areas</span></h1>
   <p>Providing rapid 24/7 commercial emergency assistance, heavy truck diagnostic oversight, and trailer maintenance deployments anywhere your assets sit idle.</p>
@@ -369,9 +226,7 @@
 
 <div class="divider"></div>
 
-<!-- MAIN COVERAGE SECTION -->
 <main class="coverage-section">
-  
   <p class="section-intro-text">
     OneCall Roadside Repair operates a comprehensive dispatch matrix supporting heavy-haul fleet operations across major transportation corridors. Click any service city below to focus on local regional parameters.
   </p>
@@ -382,8 +237,6 @@
   </div>
   
   <div class="region-grid" id="regionGrid">
-    
-    <!-- Ontario Panel -->
     <div class="region-card">
       <h3>Ontario</h3>
       <div class="city-tags">
@@ -405,7 +258,6 @@
       </div>
     </div>
 
-    <!-- Quebec Panel -->
     <div class="region-card">
       <h3>Quebec</h3>
       <div class="city-tags">
@@ -422,7 +274,6 @@
       </div>
     </div>
 
-    <!-- Alberta Panel -->
     <div class="region-card">
       <h3>Alberta</h3>
       <div class="city-tags">
@@ -436,7 +287,6 @@
       </div>
     </div>
 
-    <!-- British Columbia Panel -->
     <div class="region-card">
       <h3>British Columbia</h3>
       <div class="city-tags">
@@ -454,7 +304,6 @@
       </div>
     </div>
 
-    <!-- Prairies Panel -->
     <div class="region-card">
       <h3>Manitoba &amp; Sask.</h3>
       <div class="city-tags">
@@ -467,7 +316,6 @@
       </div>
     </div>
 
-    <!-- Atlantic Canada Panel -->
     <div class="region-card">
       <h3>Atlantic Provinces</h3>
       <div class="city-tags">
@@ -481,7 +329,6 @@
         <button class="city-tag">Corner Brook, NL</button>
       </div>
     </div>
-
   </div>
 
   <h2>Remote &amp; Rural Logistics</h2>
@@ -496,12 +343,10 @@
     <strong>24/7 Emergency Dispatch Available Across Canada</strong>
     Our line stays open through the night. Call us whenever mechanical issues threaten your delivery timeline.
   </div>
-
 </main>
 
-<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+<footer>&copy; 2026 ONECALL ROADSIDE REPAIR. 24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
 
-<!-- INTERACTIVE FILTER LOGIC -->
 <script>
   const tags = document.querySelectorAll('.city-tag');
   const cards = document.querySelectorAll('.region-card');
@@ -510,35 +355,25 @@
   tags.forEach(tag => {
     tag.addEventListener('click', (e) => {
       e.stopPropagation();
-      
       const wasActive = tag.classList.contains('active-filter');
-      
-      // Reset all tags and cards first
       tags.forEach(t => t.classList.remove('active-filter'));
       cards.forEach(c => c.classList.remove('dimmed'));
       
       if (!wasActive) {
-        // Mark clicked tag as active
         tag.classList.add('active-filter');
-        
-        // Find parent card and dim all *other* cards
         const parentCard = tag.closest('.region-card');
         cards.forEach(card => {
           if (card !== parentCard) {
             card.classList.add('dimmed');
           }
         });
-        
-        // Show reset button
         clearBtn.style.display = 'inline-block';
       } else {
-        // If clicking an already active tag, just reset everything
         clearBtn.style.display = 'none';
       }
     });
   });
 
-  // Reset function
   clearBtn.addEventListener('click', () => {
     tags.forEach(t => t.classList.remove('active-filter'));
     cards.forEach(c => c.classList.remove('dimmed'));
