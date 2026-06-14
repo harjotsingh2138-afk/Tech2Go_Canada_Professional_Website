@@ -42,28 +42,41 @@
       align-items: center;
       padding: 20px 40px;
       background: #ffffff;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
+    /* MATCHED HOMEPAGE LOGO FEATURES */
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 24px;
-      line-height: 1;
+      font-size: 32px;
+      line-height: 0.95;
     }
 
     .logo a {
       text-decoration: none;
-      color: var(--dark);
+      color: inherit;
+    }
+
+    .logo .brand-highlight {
+      color: var(--red);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .logo .brand-main {
+      color: #111111;
+      font-weight: 600;
+      letter-spacing: 0px;
     }
 
     .logo small {
       display: block;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 700;
       color: var(--gray);
-      letter-spacing: 1px;
+      letter-spacing: 3.2px; /* Perfectly aligns the subtitle under the main name */
+      text-transform: uppercase;
       margin-top: 4px;
     }
 
@@ -256,7 +269,7 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
         gap: 15px;
@@ -296,9 +309,11 @@
 <!-- FIXED STICKY NAVIGATION WRAPPER -->
 <div class="header-wrapper">
   <header>
+    <!-- UPDATED LOGO MARKUP -->
     <div class="logo">
       <a href="index.html">
-        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+        <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
+        <small>Mobile Truck &amp; Trailer Repair</small>
       </a>
     </div>
     <nav>

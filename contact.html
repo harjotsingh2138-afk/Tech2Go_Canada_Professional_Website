@@ -47,16 +47,15 @@
       align-items: center;
       padding: 20px 40px;
       background: #ffffff;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
+    /* MATCHED HOMEPAGE LOGO FEATURES */
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 24px;
-      color: #111;
-      line-height: 1;
+      font-size: 32px;
+      line-height: 0.95;
     }
 
     .logo a {
@@ -64,12 +63,26 @@
       color: inherit;
     }
 
+    .logo .brand-highlight {
+      color: var(--red);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .logo .brand-main {
+      color: #111111;
+      font-weight: 600;
+      letter-spacing: 0px;
+    }
+
     .logo small {
       display: block;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 700;
       color: var(--gray);
-      letter-spacing: 1px;
+      letter-spacing: 3.2px; /* Perfectly aligns the subtitle under the main name */
+      text-transform: uppercase;
+      margin-top: 4px;
     }
 
     nav {
@@ -398,7 +411,7 @@
       margin: 0 40px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .header-wrapper { position: relative; } /* Reverts sticky header on mobile screens to preserve valuable screen height */
       .hero { padding: 60px 20px 40px; }
       .services { padding: 60px 20px; }
@@ -425,9 +438,11 @@
 <!-- FIXED STICKY NAVIGATION WRAPPER -->
 <div class="header-wrapper">
   <header>
+    <!-- UPDATED LOGO MARKUP -->
     <div class="logo">
       <a href="index.html">
-        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+        <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
+        <small>Mobile Truck &amp; Trailer Repair</small>
       </a>
     </div>
     <nav>
@@ -472,28 +487,31 @@
 
     <!-- RIGHT PANEL: Professional Contact Form -->
     <div class="contact-form-panel">
-      <form class="pro-form">
+      <form action="https://api.web3forms.com/submit" method="POST" class="pro-form">
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="67dcf2c4-939f-4b11-bd61-5d49c2c9de39">
+
         <div class="form-group">
           <label>Your Name</label>
-          <input type="text" placeholder="John Doe" required>
+          <input type="text" name="name" placeholder="John Doe" required>
         </div>
         
         <div class="form-group">
           <label>Phone Number</label>
-          <input type="tel" placeholder="(555) 000-0000" required>
+          <input type="tel" name="phone" placeholder="(555) 000-0000" required>
         </div>
         
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" placeholder="name@company.com" required>
+          <input type="email" name="email" placeholder="name@company.com" required>
         </div>
         
         <div class="form-group">
           <label>Describe your issue</label>
-          <textarea placeholder="Tell us your location and what mechanical breakdown support you need..." rows="4" required></textarea>
+          <textarea name="message" placeholder="Tell us your location and what mechanical breakdown support you need..." rows="4" required></textarea>
         </div>
         
-        <button type="button" class="submit-btn" onclick="alert('Thank you! We have received your emergency dispatch request and will contact you shortly.')">
+        <button type="submit" class="submit-btn">
           Submit Request
         </button>
       </form>

@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truck & Trailer Roadside Repair Services</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <title>Truck & Trailer Roadside Repair Services - Get a Quote</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght=400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -13,47 +12,74 @@
       --red: #c0392b;
       --red-dark: #96281b;
       --red-light: #e74c3c;
-      --yellow: #f39c12;
-      --yellow-bright: #f1c40f;
-      --dark: #ffffff;
-      --dark2: #f5f5f5;
-      --dark3: #eeeeee;
-      --gray: #555;
-      --light: #f5f5f0;
-      --white: #111111;
+      --dark: #111111;
+      --gray: #555555;
+      --light-bg: #fdfdfd;
+      --border: #e8e8e8;
     }
 
     body {
       background: #ffffff;
       font-family: 'Barlow', sans-serif;
-      color: #111111;
+      color: var(--dark);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* HEADER & NAVIGATION */
+    /* ── FIXED STICKY NAVIGATION WRAPPER ── */
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
       background: #ffffff;
-      border-bottom: 1px solid #e8e8e8;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
+    /* MATCHED LOGO FEATURES */
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      line-height: 0.95;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo .brand-highlight {
+      color: var(--red);
       font-weight: 900;
-      font-size: 24px;
-      color: #111;
-      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .logo .brand-main {
+      color: #111111;
+      font-weight: 600;
+      letter-spacing: 0px;
     }
 
     .logo small {
       display: block;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 700;
       color: var(--gray);
-      letter-spacing: 1px;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      margin-top: 4px;
     }
 
     nav {
@@ -64,7 +90,7 @@
 
     nav a {
       text-decoration: none;
-      color: #111;
+      color: var(--dark);
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       text-transform: uppercase;
@@ -79,315 +105,160 @@
       border-radius: 3px;
     }
 
-    /* HERO SECTION */
-    .hero {
-      background: linear-gradient(135deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%);
-      padding: 80px 40px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 3px solid var(--red);
+    /* ── FORM CONTAINER DESIGN ── */
+    .quote-container {
+      max-width: 700px;
+      width: 100%;
+      margin: 60px auto;
+      padding: 0 40px;
+      flex: 1;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 60px,
-        rgba(192,57,43,0.03) 60px,
-        rgba(192,57,43,0.03) 61px
-      );
-      pointer-events: none;
+    .quote-header {
+      border-left: 4px solid var(--red);
+      padding-left: 15px;
+      margin-bottom: 35px;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--red);
-      color: white;
+    .quote-header h1 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 2px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(42px, 7vw, 80px);
-      font-weight: 900;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-      color: #111;
-    }
-
-    .hero h1 span {
-      color: var(--red);
-      display: block;
-    }
-
-    .hero p {
-      font-size: 17px;
-      color: #555;
-      max-width: 560px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--red);
-      color: white;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      border-radius: 3px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .hero-cta:hover { background: var(--red-light); }
-
-    /* SERVICES SECTION */
-    .services {
-      padding: 80px 40px;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
+      font-size: 42px;
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1;
-      margin-bottom: 8px;
-      color: #111;
+      color: var(--dark);
+      letter-spacing: -0.5px;
     }
 
-    .section-title span { color: var(--red); }
-
-    .section-sub {
+    .quote-header p {
       font-size: 15px;
-      color: #555;
-      margin-bottom: 56px;
-      max-width: 500px;
+      color: var(--gray);
+      margin-top: 8px;
     }
 
-    /* CARDS GRID */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2px;
-    }
-
-    .card {
-      position: relative;
-      background: #ffffff;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      border: 1px solid #e8e8e8;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .card:hover { transform: translateY(-4px); z-index: 2; }
-    .card:hover .card-img-placeholder img { filter: brightness(0.6); }
-    .card:hover .card-overlay { opacity: 1; }
-    .card:hover .card-arrow { transform: translateX(6px); }
-
-    .card-img-placeholder {
-      width: 100%;
-      height: 260px;
-      background: #1a1a1a;
-      position: relative;
-    }
-
-    .card-img-placeholder img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      transition: filter 0.4s ease;
-    }
-
-    .card-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 260px;
-      background: linear-gradient(to bottom, rgba(192,57,43,0.15), rgba(192,57,43,0.05));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-
-    .card-number {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: white;
-      background: var(--red);
-      padding: 4px 10px;
-      border-radius: 2px;
-      z-index: 2;
-    }
-
-    .card-body {
-      padding: 24px 28px 28px;
-      border-top: 2px solid var(--red);
-      position: relative;
-    }
-
-    .card-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 10px;
-      color: #111111;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      line-height: 1.65;
-      color: #555;
-      margin-bottom: 18px;
-    }
-
-    .card-footer {
+    /* Form Fields Styling */
+    form {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid #e8e8e8;
-      padding-top: 16px;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .card-badge {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--yellow);
-      background: rgba(243,156,18,0.1);
-      padding: 4px 10px;
-      border-radius: 2px;
-      border: 1px solid rgba(243,156,18,0.2);
+      letter-spacing: 0.5px;
+      color: var(--dark);
+      gap: 6px;
     }
 
-    .card-arrow {
-      font-size: 20px;
-      color: var(--red);
-      transition: transform 0.3s ease;
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      padding: 12px 16px;
+      background: var(--light-bg);
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      color: var(--dark);
+      outline: none;
+      transition: all 0.2s ease;
+      width: 100%;
     }
 
-    /* BOTTOM BANNER */
-    .bottom-banner {
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--red);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 14px;
+      cursor: pointer;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
       background: var(--red);
-      padding: 60px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      color: white;
-    }
-
-    .bottom-banner::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(0,0,0,0.05) 20px,
-        rgba(0,0,0,0.05) 21px
-      );
-    }
-
-    .bottom-banner h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 900;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 12px;
-      position: relative;
-    }
-
-    .bottom-banner p {
-      font-size: 16px;
-      opacity: 0.85;
-      margin-bottom: 28px;
-      position: relative;
-    }
-
-    .phone-link {
-      display: inline-block;
-      background: white;
-      color: var(--red);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 22px;
-      font-weight: 900;
       letter-spacing: 1px;
+      padding: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--red-dark);
+    }
+
+    /* Content Callout Integration */
+    .coverage-callout {
+      text-align: center;
+      padding: 24px;
+      background: #fff9f9;
+      border: 1px solid rgba(192,57,43,0.15);
+      border-radius: 4px;
+      color: var(--dark);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-top: 20px;
+    }
+
+    .coverage-callout strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
       text-transform: uppercase;
-      padding: 14px 40px;
-      border-radius: 3px;
-      text-decoration: none;
-      position: relative;
-      transition: transform 0.2s;
+      color: var(--red);
+      display: block;
+      margin-bottom: 4px;
     }
 
-    .phone-link:hover { transform: scale(1.03); }
-
-    /* DIVIDER */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #ddd, transparent);
-      margin: 0 40px;
+    /* Footer Layout Elements */
+    footer {
+      background: var(--dark);
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: auto;
     }
 
-    @media (max-width: 600px) {
-      .hero { padding: 60px 20px 40px; }
-      .services { padding: 60px 20px; }
-      .cards-grid { grid-template-columns: 1fr; gap: 2px; }
+    @media (max-width: 768px) {
       header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
       nav { flex-wrap: wrap; justify-content: center; }
+      .quote-container { padding: 0 20px; margin: 40px auto; }
+      .form-row { grid-template-columns: 1fr; gap: 20px; }
     }
   </style>
 
@@ -405,37 +276,95 @@
 </head>
 <body>
 
-<!-- NAVIGATION HEADER -->
-<header>
-  <div class="logo">
-  <!-- This link wraps around the text and points to your home page -->
-  <a href="index.html" style="text-decoration: none; color: inherit;">
-    ONECALL ROADSIDE REPAIR<small style="display: block;">Mobile Truck &amp; Trailer Repair</small>
-  </a>
-</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="coverage.html">Coverage</a>
-    <a href="fleet.html">Fleet</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a class="btn" href="quote.html">Get Quote</a>
-  </nav>
-</header>
-<section class='section'><h1>Get a Quote</h1>
-<form>
-<input placeholder='Name'>
-<input placeholder='Company'>
-<input placeholder='Phone'>
-<input placeholder='Email'>
-<input placeholder='City'>
-<select><option>Truck Repair</option><option>Trailer Repair</option><option>Fleet Maintenance</option></select>
-<textarea placeholder='Project details'></textarea>
-<button type='button' onclick="alert('Quote request submitted!')">Request Quote</button>
-<div class="coverage-callout">
-        <strong>24/7 Emergency Dispatch Available Across Canada</strong><br>
-        Call us anytime for roadside truck and trailer repair assistance.
+<!-- FIXED STICKY NAVIGATION WRAPPER -->
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
+        <small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
     </div>
-</form></section>
-<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer></body></html>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<!-- FORM INTERFACE COMPONENT -->
+<main class="quote-container">
+  
+  <div class="quote-header">
+    <h1>Request A Quote</h1>
+    <p>Submit your operational details below to receive reliable commercial dispatch metrics or pricing structures.</p>
+  </div>
+  
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <!-- Web3Forms Access Token -->
+    <input type="hidden" name="access_key" value="67dcf2c4-939f-4b11-bd61-5d49c2c9de39">
+    
+    <div class="form-row">
+      <label>
+        Full Name *
+        <input type="text" name="name" placeholder="John Doe" required>
+      </label>
+      
+      <label>
+        Company Name
+        <input type="text" name="company" placeholder="Logistics Corp">
+      </label>
+    </div>
+    
+    <div class="form-row">
+      <label>
+        Phone Number *
+        <input type="tel" name="phone" placeholder="(555) 000-0000" required>
+      </label>
+      
+      <label>
+        Email Address *
+        <input type="email" name="email" placeholder="dispatcher@company.com" required>
+      </label>
+    </div>
+    
+    <div class="form-row">
+      <label>
+        City / Current Location
+        <input type="text" name="city" placeholder="e.g. Mississauga, ON">
+      </label>
+      
+      <label>
+        Required Service Type
+        <select name="service_type">
+          <option value="Truck Repair">Truck Repair Solutions</option>
+          <option value="Trailer Repair">Trailer Repair Operations</option>
+          <option value="Fleet Maintenance">Preventative Fleet Maintenance</option>
+        </select>
+      </label>
+    </div>
+    
+    <label>
+      Project &amp; Mechanical Details
+      <textarea name="project_details" placeholder="Describe your truck/trailer model details, diagnostic codes, or maintenance requirements..."></textarea>
+    </label>
+    
+    <button type="submit">Submit Request</button>
+    
+    <div class="coverage-callout">
+      <strong>24/7 Emergency Dispatch Available Across Canada</strong>
+      If this is an active highway breakdown, bypass this form and contact dispatcher services immediately.
+    </div>
+  </form>
+</main>
+
+<!-- FOOTER ELEMENT -->
+<footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+
+</body>
+</html>

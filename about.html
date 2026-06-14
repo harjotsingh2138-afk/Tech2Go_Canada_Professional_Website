@@ -47,20 +47,38 @@
     margin: 0 auto;
   }
 
+  /* MATCHED HOMEPAGE LOGO FEATURES */
   .logo {
     font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    line-height: 0.95;
+  }
+
+  .logo a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .logo .brand-highlight {
+    color: var(--red);
     font-weight: 900;
-    font-size: 24px;
-    color: #111;
-    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .logo .brand-main {
+    color: #111111;
+    font-weight: 600;
+    letter-spacing: 0px;
   }
 
   .logo small {
     display: block;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--gray);
-    letter-spacing: 1px;
+    letter-spacing: 3.2px; /* Perfectly aligns the subtitle under the main name */
+    text-transform: uppercase;
+    margin-top: 4px;
   }
 
   nav {
@@ -190,7 +208,6 @@
     position: relative;
   }
 
-  /* FIXED CONTAINER: Switched layout type to display block with relative boundaries */
   .about-img-box {
     width: 100%;
     height: 400px;
@@ -208,10 +225,9 @@
     bottom: 0; left: 0; right: 0;
     height: 4px;
     background: var(--red);
-    z-index: 3; /* Places the subtle bottom line cleanly over the image edge */
+    z-index: 3;
   }
 
-  /* FIXED ABSOLUTE IMAGE POSITIONING */
   .about-main-img {
     width: 100%;
     height: 100%;
@@ -222,7 +238,6 @@
     z-index: 2;
   }
 
-  /* FIXED POSITION: Centers fallback icon manually inside parent container boundaries */
   .about-img-icon {
     font-size: 56px;
     opacity: 0.2;
@@ -242,7 +257,7 @@
     padding: 16px 24px;
     border-radius: 3px;
     box-shadow: 0 8px 24px rgba(192,57,43,0.3);
-    z-index: 4; /* Keeps badge floating perfectly ahead of standard element overlaps */
+    z-index: 4;
   }
 
   .about-badge-num {
@@ -629,7 +644,7 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .header-wrapper { position: relative; } /* Disables sticky headers gracefully on tablets/mobile layouts */
+    .header-wrapper { position: relative; } 
     header { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
     nav { flex-wrap: wrap; justify-content: center; }
     .about-hero-inner,
@@ -666,9 +681,11 @@
 <!-- FIXED STICKY NAVIGATION WRAPPER -->
 <div class="header-wrapper">
   <header>
+    <!-- UPDATED LOGO MARKUP -->
     <div class="logo">
-      <a href="index.html" style="text-decoration: none; color: inherit;">
-        ONECALL ROADSIDE REPAIR<small>Mobile Truck &amp; Trailer Repair</small>
+      <a href="index.html">
+        <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
+        <small>Mobile Truck &amp; Trailer Repair</small>
       </a>
     </div>
     <nav>
