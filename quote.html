@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Truck & Trailer Roadside Repair Services - Get a Quote</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght=400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght=400;600;700;800;900&family=Barlow:wght=400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -309,6 +309,9 @@
     <!-- Web3Forms Access Token -->
     <input type="hidden" name="access_key" value="67dcf2c4-939f-4b11-bd61-5d49c2c9de39">
     
+    <!-- Web3Forms Honeypot Spam Protection Included below -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    
     <div class="form-row">
       <label>
         Full Name *
@@ -365,6 +368,29 @@
 
 <!-- FOOTER ELEMENT -->
 <footer>24/7 Mobile Truck &amp; Trailer Repair Across Canada</footer>
+
+<!-- Google reCAPTCHA scripts configured with your custom keys -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LfhICwtAAAAAG6zCrSQm1uDiEQUdSftXhPJZ8t2"></script>
+<script>
+  const myForm = document.querySelector('form'); 
+
+  myForm.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LfhICwtAAAAAG6zCrSQm1uDiEQUdSftXhPJZ8t2', {action: 'submit'}).then(function(token) {
+        
+        let tokenInput = document.createElement('input');
+        tokenInput.type = 'hidden';
+        tokenInput.name = 'recaptcha_response';
+        tokenInput.value = token;
+        myForm.appendChild(tokenInput);
+
+        myForm.submit();
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
