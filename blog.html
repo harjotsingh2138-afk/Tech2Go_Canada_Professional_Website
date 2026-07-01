@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roadside Repair Tips & Guides for Ontario Truckers | OneCall Roadside Repair</title>
+  <meta name="description" content="Free guides for Ontario truckers and fleets: what to do during a breakdown, winter driving tips, maintenance schedules, and warning signs to watch for before you hit the road."/>
+  <meta name="keywords" content="mobile truck repair near me, 24/7 roadside assistance, emergency truck repair Ontario, mobile diesel mechanic, commercial truck breakdown service, truck maintenance tips"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #c0392b; --red-dark: #96281b; --red-light: #e74c3c; --dark: #111111; --gray: #555555; --light-bg: #fdfdfd; --border: #e8e8e8; }
+    body { background: #ffffff; font-family: 'Barlow', sans-serif; color: var(--dark); min-height: 100vh; display: flex; flex-direction: column; }
+    .header-wrapper { position: sticky; top: 0; left: 0; width: 100%; background: #ffffff; border-bottom: 1px solid var(--border); z-index: 1000; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 113px; background: #ffffff; max-width: 1200px; margin: 0 auto; }
+    .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; line-height: 0.95; }
+    .logo a { text-decoration: none; color: inherit; }
+    .logo .brand-highlight { color: var(--red); font-weight: 900; letter-spacing: -0.5px; }
+    .logo .brand-main { color: #111111; font-weight: 600; letter-spacing: 0px; }
+    .logo small { display: block; font-size: 11px; font-weight: 700; color: var(--gray); letter-spacing: 3.2px; text-transform: uppercase; margin-top: 4px; }
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { text-decoration: none; color: var(--dark); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 15px; letter-spacing: 1px; }
+    nav a:hover { color: var(--red); }
+    nav a.btn { background: var(--red); color: #fff; padding: 8px 16px; border-radius: 3px; }
+    nav a.btn:hover { background: var(--red-dark); color: #fff; }
+    .hero { background: #ffffff; padding: 80px 40px 60px; text-align: center; border-bottom: 3px solid var(--red); }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(42px, 6vw, 72px); font-weight: 900; line-height: 1.1; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 16px; color: var(--dark); }
+    .hero h1 span { color: var(--red); display: block; }
+    .hero p { font-size: 18px; color: var(--gray); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); margin: 40px auto; max-width: 1200px; }
+    .blog-section { max-width: 1280px; margin: 0 auto; padding: 40px 40px 100px; flex: 1; width: 100%; }
+    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+    .post-card { background: #ffffff; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column; }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+    .post-icon { position: relative; height: 150px; background: linear-gradient(135deg, var(--dark) 0%, var(--red-dark) 55%, var(--red) 100%); display: flex; align-items: center; justify-content: center; font-size: 56px; overflow: hidden; border-bottom: 4px solid var(--tagcolor, var(--red)); }
+    .post-icon::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 30px); }
+    .post-icon span { position: relative; z-index: 2; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.3)); background: #fff; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid var(--tagcolor, var(--red)); font-size: 30px; }
+    .post-card .post-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .post-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #fff; background: var(--tagcolor, var(--red)); padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+    .post-card a.read-more { color: var(--tagcolor, var(--red)) !important; }
+    .post-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 21px; font-weight: 800; line-height: 1.15; margin-bottom: 10px; }
+    .post-card p { color: var(--gray); font-size: 14px; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+    .post-card a.read-more { text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--red); font-size: 13px; }
+    .post-card a.read-more:hover { text-decoration: underline; }
+    footer { background: var(--dark); color: rgba(255,255,255,0.4); text-align: center; padding: 24px; font-size: 13px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid #222; margin-top: auto; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: underline; }
+    footer a:hover { color: #ffffff; }
+    .sticky-call-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--red); z-index: 1001; text-align: center; padding: 12px; display: none; }
+    .sticky-call-bar a { color: #fff; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 1px; }
+    @media (max-width: 768px) {
+      .sticky-call-bar { display: block; }
+      header { flex-direction: column; gap: 15px; padding: 20px 20px; height: auto; text-align: center; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .hero { padding: 60px 20px 40px; }
+      .blog-section { padding: 20px 20px 100px; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HW95CCNS2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7HW95CCNS2');
+  </script>
+</head>
+<body>
+
+<div class="header-wrapper">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <span class="brand-highlight">ONECALL</span> <span class="brand-main">ROADSIDE REPAIR</span>
+        <small>Mobile Truck &amp; Trailer Repair</small>
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html">Get Quote</a>
+    </nav>
+  </header>
+</div>
+
+<section class="hero">
+  <h1>Driver &amp; Fleet Resources<span>Roadside Repair Guides</span></h1>
+  <p>Practical advice for Ontario truckers and fleet managers — what to do during a breakdown, how to prevent one, and what to expect when you call us.</p>
+</section>
+
+<div class="divider"></div>
+
+<main class="blog-section">
+  <div class="post-grid">
+    <div class="post-card" style="--tagcolor: #c0392b;">
+      <div class="post-icon"><span>🚨</span></div>
+      <div class="post-body"><span class="post-tag">Emergency Guide</span><h3>What to Do If Your Truck Breaks Down on an Ontario Highway</h3><p>A step-by-step safety checklist for the first 10 minutes after a breakdown.</p><a class="read-more" href="blog-highway-breakdown-guide.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #16a085;">
+      <div class="post-icon"><span>🧾</span></div>
+      <div class="post-body"><span class="post-tag">Billing Guide</span><h3>What Affects Your Mobile Truck &amp; Trailer Repair Bill</h3><p>What goes into a roadside repair invoice and how to avoid surprises.</p><a class="read-more" href="blog-mobile-repair-cost-ontario.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #e67e22;">
+      <div class="post-icon"><span>⚠️</span></div>
+      <div class="post-body"><span class="post-tag">Prevention</span><h3>5 Warning Signs You Need Roadside Diagnostics</h3><p>Early signs of brake, electrical, and suspension failure to watch for.</p><a class="read-more" href="blog-warning-signs-roadside-diagnostics.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #2980b9;">
+      <div class="post-icon"><span>❄️</span></div>
+      <div class="post-body"><span class="post-tag">Winter Driving</span><h3>Winter Driving in Ontario: Avoid a Roadside Breakdown</h3><p>Cold-weather prep tips to reduce your chances of getting stranded.</p><a class="read-more" href="blog-winter-driving-tips.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #e67e22;">
+      <div class="post-icon"><span>🛞</span></div>
+      <div class="post-body"><span class="post-tag">Prevention</span><h3>Tire Blowouts: Causes and Prevention</h3><p>Why tires blow out on the highway and how to prevent it.</p><a class="read-more" href="blog-tire-blowout-prevention.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #8e44ad;">
+      <div class="post-icon"><span>🛑</span></div>
+      <div class="post-body"><span class="post-tag">Education</span><h3>Air Brake System Basics Every Driver Should Know</h3><p>A plain-English guide to how air brakes work and early warning signs.</p><a class="read-more" href="blog-air-brake-basics.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #27ae60;">
+      <div class="post-icon"><span>⚙️</span></div>
+      <div class="post-body"><span class="post-tag">Trailer Repair</span><h3>Trailer Landing Gear Problems: Causes and Fixes</h3><p>Why landing gear jams or fails, and how to prevent it.</p><a class="read-more" href="blog-trailer-landing-gear-problems.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #d4ac0d;">
+      <div class="post-icon"><span>⚡</span></div>
+      <div class="post-body"><span class="post-tag">Diagnostics</span><h3>Truck Electrical System Failures: Top 5 Causes</h3><p>Batteries, corrosion, wiring, fuses, and grounds explained.</p><a class="read-more" href="blog-electrical-failures-top-causes.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #2c3e50;">
+      <div class="post-icon"><span>🚛</span></div>
+      <div class="post-body"><span class="post-tag">Guide</span><h3>Towing vs. Mobile Roadside Repair: Which Do You Need?</h3><p>How to decide between calling a tow and calling a mechanic.</p><a class="read-more" href="blog-towing-vs-mobile-repair.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #16a085;">
+      <div class="post-icon"><span>🗓️</span></div>
+      <div class="post-body"><span class="post-tag">Fleet Maintenance</span><h3>Preventive Maintenance Schedule for Long-Haul Trucks</h3><p>A practical schedule to reduce breakdowns before they happen.</p><a class="read-more" href="blog-preventive-maintenance-schedule.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #7f8c8d;">
+      <div class="post-icon"><span>📋</span></div>
+      <div class="post-body"><span class="post-tag">Compliance</span><h3>DOT/CVSA Inspection Checklist for Fleet Managers</h3><p>Prepare your trucks and trailers before an inspection.</p><a class="read-more" href="blog-dot-inspection-checklist.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #e67e22;">
+      <div class="post-icon"><span>☀️</span></div>
+      <div class="post-body"><span class="post-tag">Seasonal</span><h3>Summer Heat and Your Truck: Overheating Prevention</h3><p>How to protect your engine and tires during hot Ontario summers.</p><a class="read-more" href="blog-summer-overheating-prevention.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #c0392b;">
+      <div class="post-icon"><span>📞</span></div>
+      <div class="post-body"><span class="post-tag">About Our Service</span><h3>How Fleet Dispatch Works: What to Expect</h3><p>A behind-the-scenes look at how we get a mechanic to you fast.</p><a class="read-more" href="blog-fleet-dispatch-explained.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #2980b9;">
+      <div class="post-icon"><span>📍</span></div>
+      <div class="post-body"><span class="post-tag">Local Coverage</span><h3>Mobile Truck Repair in the Greater Toronto Area</h3><p>Fast response for local fleets across the GTA.</p><a class="read-more" href="blog-gta-local-coverage.html">Read Guide &rarr;</a></div>
+    </div>
+
+    <div class="post-card" style="--tagcolor: #e67e22;">
+      <div class="post-icon"><span>🧰</span></div>
+      <div class="post-body"><span class="post-tag">Prevention</span><h3>Owner-Operator's Roadside Emergency Kit Checklist</h3><p>What to carry in your cab to stay safe during a breakdown.</p><a class="read-more" href="blog-owner-operator-emergency-kit.html">Read Guide &rarr;</a></div>
+    </div>
+
+  </div>
+</main>
+
+<footer>&copy; 2026 ONECALL ROADSIDE REPAIR. 24/7 Mobile Truck &amp; Trailer Repair Across Ontario</footer>
+
+<div class="sticky-call-bar">
+  <a href="tel:+12899437205">📞 CALL NOW — +1 (289) 943-7205</a>
+</div>
+
+</body>
+</html>

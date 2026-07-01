@@ -156,9 +156,9 @@
     .region-card:hover { border-top-color: var(--red); transform: translateY(-2px); }
     .region-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; color: var(--red); display: flex; justify-content: space-between; align-items: center; }
     .region-card h3::after { content: '🇨🇦'; font-size: 16px; opacity: 0.7; }
-    
+
     .city-tags { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .city-tag { font-size: 14px; font-weight: 500; color: #333333; padding: 8px 12px; background: var(--light-bg); border: 1px solid #eeeeee; border-radius: 3px; cursor: pointer; text-align: left; transition: all 0.2s ease; }
+    .city-tag { font-size: 14px; font-weight: 500; color: #333333; padding: 8px 12px; background: var(--light-bg); border: 1px solid #eeeeee; border-radius: 3px; cursor: pointer; text-align: left; transition: all 0.2s ease; text-decoration: none; }
     .city-tag:hover { background: #fff5f5; border-color: var(--red-light); color: var(--red); }
     .city-tag.active-filter { background: var(--red); color: #ffffff; border-color: var(--red); }
     .city-tag.active-filter:hover { background: var(--red-dark); color: #ffffff; }
@@ -166,6 +166,9 @@
 
     .coverage-callout { text-align: center; padding: 40px 30px; background: #fff9f9; border: 1px solid rgba(192,57,43,0.15); border-radius: 4px; color: var(--dark); font-size: 18px; line-height: 1.6; margin-top: 60px; }
     .coverage-callout strong { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 8px; }
+    .city-guide-links { font-size: 16px; line-height: 2.2; }
+    .city-guide-links a { color: var(--red); font-weight: 700; text-decoration: none; }
+    .city-guide-links a:hover { text-decoration: underline; }
 
     footer {
       background: var(--dark);
@@ -235,22 +238,22 @@
     <h2>Ontario Service Hubs (Within 3 Hours of Toronto)</h2>
     <button class="clear-filter-btn" id="clearFilter">Show All Regions ×</button>
   </div>
-  
+
   <div class="region-grid" id="regionGrid">
     <div class="region-card">
       <h3>Greater Toronto Area (GTA)</h3>
       <div class="city-tags">
         <button class="city-tag">Toronto</button>
-        <button class="city-tag">Mississauga</button>
+        <a class="city-tag" href="city-mississauga.html">Mississauga</a>
         <button class="city-tag">Brampton</button>
-        <button class="city-tag">Vaughan</button>
-        <button class="city-tag">Markham</button>
-        <button class="city-tag">Oakville</button>
+        <a class="city-tag" href="city-vaughan.html">Vaughan</a>
+        <a class="city-tag" href="city-markham.html">Markham</a>
+        <a class="city-tag" href="city-oakville.html">Oakville</a>
         <button class="city-tag">Burlington</button>
         <button class="city-tag">Pickering</button>
         <button class="city-tag">Ajax</button>
         <button class="city-tag">Whitby</button>
-        <button class="city-tag">Oshawa</button>
+        <a class="city-tag" href="city-oshawa.html">Oshawa</a>
         <button class="city-tag">Milton</button>
         <button class="city-tag">Richmond Hill</button>
         <button class="city-tag">Caledon</button>
@@ -261,12 +264,12 @@
       <h3>Southwestern &amp; Tri-Cities</h3>
       <div class="city-tags">
         <button class="city-tag">Hamilton</button>
-        <button class="city-tag">Kitchener</button>
+        <a class="city-tag" href="city-kitchener.html">Kitchener</a>
         <button class="city-tag">Waterloo</button>
         <button class="city-tag">Cambridge</button>
         <button class="city-tag">Guelph</button>
         <button class="city-tag">Brantford</button>
-        <button class="city-tag">London</button>
+        <a class="city-tag" href="city-london-ontario.html">London</a>
         <button class="city-tag">Woodstock</button>
         <button class="city-tag">Ingersoll</button>
         <button class="city-tag">St. Thomas</button>
@@ -277,7 +280,7 @@
     <div class="region-card">
       <h3>Central &amp; Northern Corridor</h3>
       <div class="city-tags">
-        <button class="city-tag">Barrie</button>
+        <a class="city-tag" href="city-barrie.html">Barrie</a>
         <button class="city-tag">Innisfil</button>
         <button class="city-tag">Orillia</button>
         <button class="city-tag">Gravenhurst</button>
@@ -294,7 +297,7 @@
     <div class="region-card">
       <h3>Eastern Corridor &amp; Niagara</h3>
       <div class="city-tags">
-        <button class="city-tag">Niagara Falls</button>
+        <a class="city-tag" href="city-niagara-falls.html">Niagara Falls</a>
         <button class="city-tag">St. Catharines</button>
         <button class="city-tag">Fort Erie</button>
         <button class="city-tag">Bowmanville</button>
@@ -304,10 +307,27 @@
         <button class="city-tag">Belleville</button>
         <button class="city-tag">Trenton</button>
         <button class="city-tag">Peterborough</button>
-        <button class="city-tag">Kingston</button>
+        <a class="city-tag" href="city-kingston.html">Kingston</a>
       </div>
     </div>
   </div>
+
+  <div class="section-header-container">
+    <h2>Local City Guides</h2>
+  </div>
+  <p class="section-intro-text">Read city-specific breakdown, repair, and dispatch info for these service areas:</p>
+  <p class="city-guide-links">
+    <a href="city-mississauga.html">Mississauga</a> &middot;
+    <a href="city-vaughan.html">Vaughan</a> &middot;
+    <a href="city-markham.html">Markham</a> &middot;
+    <a href="city-oakville.html">Oakville</a> &middot;
+    <a href="city-kitchener.html">Kitchener</a> &middot;
+    <a href="city-london-ontario.html">London</a> &middot;
+    <a href="city-barrie.html">Barrie</a> &middot;
+    <a href="city-niagara-falls.html">Niagara Falls</a> &middot;
+    <a href="city-oshawa.html">Oshawa</a> &middot;
+    <a href="city-kingston.html">Kingston</a>
+  </p>
 
   <h2>Regional Logistics &amp; Corridor Support</h2>
   <p class="section-intro-text">
@@ -336,7 +356,7 @@
       const wasActive = tag.classList.contains('active-filter');
       tags.forEach(t => t.classList.remove('active-filter'));
       cards.forEach(c => c.classList.remove('dimmed'));
-      
+
       if (!wasActive) {
         tag.classList.add('active-filter');
         const parentCard = tag.closest('.region-card');
